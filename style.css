@@ -1,0 +1,138 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;  
+    align-items: center;       
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+    color: #fff;
+    overflow: hidden;
+    position: relative; 
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+.login-box {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+    padding: 40px 35px;
+    width: 350px;
+    text-align: center;
+    animation: fadeIn 1.5s ease;
+    position: relative;
+    z-index: 10; 
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.login-box h2 {
+    margin-bottom: 25px;
+    font-size: 28px;
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+
+.input-box {
+    position: relative;
+    margin: 20px 0;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    transition: 0.3s ease;
+}
+
+.input-box input:focus {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px #00ffff;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #00ffff, #007fff);
+    border: none;
+    border-radius: 8px;
+    color: #000;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.4s;
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    box-shadow: 0 0 20px #00ffff;
+    transform: scale(1.03);
+}
+
+
+.error-message {
+    margin-top: 10px;
+    color: #ff6b6b;
+    font-size: 14px;
+    height: 20px;
+    text-shadow: 0 0 5px #ff0000;
+}
+
+
+.neon-ring {
+    position: absolute;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: 0 0 40px 10px rgba(0, 255, 255, 0.2);
+    animation: ringMove 8s infinite linear;
+    z-index: 1; /* Mantém os anéis atrás do login */
+}
+
+@keyframes ringMove {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.ring1 {
+    width: 400px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ring2 {
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: -4s;
+}
