@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Futurista</title>
+    <style>
+        /* ======== ESTILO GERAL ======== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background-size: 400% 400%;
+            animation: gradientMove 10s ease infinite;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ======== CONTAINER DO LOGIN ======== */
+        .login-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+            padding: 40px 35px;
+            width: 350px;
+            text-align: center;
+            animation: fadeIn 1.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .login-box h2 {
+            margin-bottom: 25px;
+            font-size: 28px;
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        /* ======== CAMPOS DE ENTRADA ======== */
+        .input-box {
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            outline: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            transition: 0.3s ease;
+        }
+
+        .input-box input:focus {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px #00ffff;
+        }
+
+        /* ======== BOTÃO ======== */
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #00ffff, #007fff);
+            border: none;
+            border-radius: 8px;
+            color: #000;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.4s;
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            box-shadow: 0 0 20px #00ffff;
+            transform: scale(1.03);
+        }
+
+        /* ======== MENSAGEM DE ERRO ======== */
+        .error-message {
+            margin-top: 10px;
+            color: #ff6b6b;
+            font-size: 14px;
+            height: 20px;
+            text-shadow: 0 0 5px #ff0000;
+        }
+
+        /* ======== DETALHES FUTURISTAS ======== */
+        .neon-ring {
+            position: absolute;
+            border-radius: 50%;
+            background: transparent;
+            box-shadow: 0 0 40px 5px rgba(0, 255, 255, 0.2);
+            animation: ringMove 8s infinite linear;
+        }
+
+        @keyframes ringMove {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .ring1 {
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            left: -100px;
+        }
+
+        .ring2 {
+            width: 300px;
+            height: 300px;
+            bottom: -80px;
+            right: -80px;
+            animation-delay: -4s;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Anéis decorativos futuristas -->
+    <div class="neon-ring ring1"></div>
+    <div class="neon-ring ring2"></div>
+
+    <!-- Caixa de login -->
+    <div class="login-box">
+        <h2>Área de Login</h2>
+        <div class="input-box">
+            <input type="text" id="username" placeholder="Usuário">
+        </div>
+        <div class="input-box">
+            <input type="password" id="password" placeholder="Senha">
+        </div>
+        <button class="btn" onclick="login()">Entrar</button>
+        <div id="error-message" class="error-message"></div>
+    </div>
+
+    <script>
+        function login() {
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const errorMessage = document.getElementById("error-message");
+
+            errorMessage.textContent = ""; // limpa mensagens anteriores
+
+            // Cenário 1: Login com dados corretos
+            if (username === "jianelinda" && password === "12345") {
+                alert("✅ Login bem-sucedido! Bem-vindo, " + username + "!");
+                window.location.href = "principal.html"; 
+            }
+            // Cenário 2: Senha incorreta
+            else if (username === "admin" && password !== "12345" && password !== "") {
+                errorMessage.textContent = "Senha incorreta. Tente novamente.";
+            }
+            // Cenário 3: Usuário incorreto
+            else if (username !== "admin" && username !== "" && password === "12345") {
+                errorMessage.textContent = "Usuário não encontrado.";
+            }
+            // Cenário 4: Campo de usuário vazio
+            else if (username === "" && password !== "") {
+                errorMessage.textContent = "O campo de usuário é obrigatório.";
+            }
+            // Cenário 5: Campo de senha vazio
+            else if (username !== "" && password === "") {
+                errorMessage.textContent = "O campo de senha é obrigatório.";
+            }
+            // Cenário 6: Ambos os campos vazios
+            else if (username === "" && password === "") {
+                errorMessage.textContent = "Todos os campos são obrigatórios.";
+            }
+            // Cenário 7: Falha simulada (exceção)
+            else {
+                errorMessage.textContent = "Erro de conexão com o servidor. Tente novamente.";
+            }
+        }
+    </script>
+
+</body>
+</html>
